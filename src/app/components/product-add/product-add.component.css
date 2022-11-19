@@ -1,0 +1,11 @@
+form{
+    margin: 5%;
+}
+
+div>small{
+    color: red;
+}
+
+input.ng-touched.ng-valid{
+border: 1px green solid;
+}
