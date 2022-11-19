@@ -5,8 +5,8 @@
       "name": "computer",
       "price": 452,
       "quantity": 2,
-      "available": true,
-      "selected": true
+      "selected": true,
+      "available": true
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "price": 58,
       "quantity": 7,
       "available": true,
-      "selected": false
+      "selected": true
     },
     {
       "id": 3,
@@ -23,6 +23,14 @@
       "quantity": 10,
       "selected": false,
       "available": true
+    },
+    {
+      "name": "Computer mouse",
+      "price": 9.99,
+      "quantity": 0,
+      "available": false,
+      "selected": false,
+      "id": 4
     }
   ]
 }
