@@ -1,6 +1,7 @@
 import { Component,Input,Output, OnInit, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActionEvent, Product, ProductActionsType } from 'src/app/model/product.model';
+import { EventDriverService } from 'src/app/service/event.driver.service';
 import { AppDataState, DataStateEnum } from 'src/app/state/product.state';
 
 @Component({
@@ -10,33 +11,17 @@ import { AppDataState, DataStateEnum } from 'src/app/state/product.state';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private evenDriverService:EventDriverService) { }
 
   ngOnInit(): void {
   }
   @Input()inputProducts$: Observable<AppDataState<Product[]>> | null = null;
-  @Output() productEmitter: EventEmitter<ActionEvent>=new EventEmitter();
+
 
   readonly ProductDataEnum = DataStateEnum;
 
-  onSelect(p:Product){
-    this.productEmitter.emit({type:ProductActionsType.SELECT_PRODUCT, payload:p})
-  }
-  onDelete(id:number){
-    this.productEmitter.emit({type:ProductActionsType.DELETE_PRODUCT,payload:id})
-  }
-  onEdit(id:number){
-    console.log(this)
-    console.log('2')
-    this.productEmitter.emit({type:ProductActionsType.EDIT_PRODUCT, payload:id})
-  }
   onAddProduct(){
-    this.productEmitter.emit({type:ProductActionsType.GET_NEW_PRODUCTS})
+    this.evenDriverService.publishEvent({type:ProductActionsType.GET_NEW_PRODUCTS})
   }
 
-  OnActionEvent($event){
-    console.log(this)
-    console.log('2')
-    this.productEmitter.emit($event);
-  }
 }

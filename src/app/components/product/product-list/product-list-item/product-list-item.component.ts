@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input , Output} from '@angular/core';
 import { ActionEvent, Product, ProductActionsType } from 'src/app/model/product.model';
+import { EventDriverService } from 'src/app/service/event.driver.service';
 
 @Component({
   selector: 'app-product-list-item',
@@ -8,22 +9,21 @@ import { ActionEvent, Product, ProductActionsType } from 'src/app/model/product.
 })
 export class ProductListItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventDriverService: EventDriverService) { }
   
-  @Output() productItemEmitter:EventEmitter<ActionEvent>= new EventEmitter();
-  @Input()product:Product;
+  // @Output() productItemEmitter:EventEmitter<ActionEvent>= new EventEmitter();
+  @Input()product!:Product;
 
   ngOnInit(): void {
   }
   onSelect(p:Product){
-    this.productItemEmitter.emit({type:ProductActionsType.SELECT_PRODUCT, payload:p})
+    this.eventDriverService.publishEvent({type:ProductActionsType.SELECT_PRODUCT, payload:p})
   }
   onDelete(id:number){
-    this.productItemEmitter.emit({type:ProductActionsType.DELETE_PRODUCT,payload:id})
+    console.log('Delete Button clicked! ID : '+id)
+    this.eventDriverService.publishEvent({type:ProductActionsType.DELETE_PRODUCT,payload:id})
   }
   onEdit(id:number){
-    console.log(this)
-    console.log('1')
-    this.productItemEmitter.emit({type:ProductActionsType.EDIT_PRODUCT, payload:id})
+    this.eventDriverService.publishEvent({type:ProductActionsType.EDIT_PRODUCT, payload:id})
   }
 }

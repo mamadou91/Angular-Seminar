@@ -15,6 +15,8 @@ import { OrderViewComponent } from './components/order-view/order-view.component
 import { ProductNavBarComponent } from './components/product/product-nav-bar/product-nav-bar.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductListItemComponent } from './components/product/product-list/product-list-item/product-list-item.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProductListItemComponent } from './components/product/product-list/prod
     OrderViewComponent,
     ProductNavBarComponent,
     ProductListComponent,
-    ProductListItemComponent
+    ProductListItemComponent,
+    LoginComponent,
+    AdminTemplateComponent
   ],
   imports: [
     BrowserModule,

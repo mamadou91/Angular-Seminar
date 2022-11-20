@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductEditComponent implements OnInit {
   id: number;
-  editForm: FormGroup;
+  editForm!: FormGroup;
 
 
 
