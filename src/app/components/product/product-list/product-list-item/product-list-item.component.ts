@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input , Output} from '@angular/core';
 import { ActionEvent, Product, ProductActionsType } from 'src/app/model/product.model';
 import { EventDriverService } from 'src/app/service/event.driver.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-product-list-item',
@@ -9,7 +10,7 @@ import { EventDriverService } from 'src/app/service/event.driver.service';
 })
 export class ProductListItemComponent implements OnInit {
 
-  constructor(private eventDriverService: EventDriverService) { }
+  constructor(private eventDriverService: EventDriverService, public loginService: LoginService) { }
   
   // @Output() productItemEmitter:EventEmitter<ActionEvent>= new EventEmitter();
   @Input()product!:Product;

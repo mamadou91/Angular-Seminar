@@ -6,6 +6,6 @@
     <td>{{product.selected}}</td>
     <td>{{product.available}}</td>
     <td ><button [ngClass]="product.selected? 'btn-success':'btn-danger'" class="btn btn-sm" (click)="onSelect(product)">{{product.selected}}</button></td>
-    <td><button class="btn btn-sm btn-danger" (click)="onDelete(product.id)"><i class="fa fa-trash-o"></i>Delete</button></td>
+    <td *ngIf="loginService.hasRole('ADMIN')"><button class="btn btn-sm btn-danger" (click)="onDelete(product.id)"><i class="fa fa-trash-o"></i>Delete</button></td>
    <td><button class="btn btn-sm btn-info" (click)="onEdit(product.id)"><i class="fa fa-edit"></i>Edit</button></td> 
 </tr>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 
 
@@ -10,14 +11,20 @@ import {Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private route:Router, public logService: LoginService) { }
 
- 
   ngOnInit(): void {
   }
+
 
   onClickAbout(){
 // this.route.navigate(['about']);
  this.route.navigateByUrl('/about')
+   }
+
+   handleLogout(){
+    this.logService.logout().subscribe((val)=>{
+      this.route.navigateByUrl('/login')
+    })
    }
 }
